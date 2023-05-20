@@ -11,12 +11,12 @@ app.get('/', (req, res) => {
         {
             title: 'My first post',
             content: 'Lorem ipsun sit dolor amet...',
-            created: Date.now()
+            created: new Date()
         },
         {
             title: 'Hello, cruel world!',
             content: 'Blablablablablablablablabla...',
-            created: Date.now()
+            created: new Date()
         }
     ]
     res.render('default', {posts: all})
