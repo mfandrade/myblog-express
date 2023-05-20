@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
             created: new Date()
         }
     ]
-    res.render('default', {posts: all})
+    res.render('posts/index', {posts: all})
 })
 
 app.listen(5000)
