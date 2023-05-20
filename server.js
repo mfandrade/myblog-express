@@ -7,7 +7,7 @@ app.set('view engine', 'ejs')
 app.use('/posts/', routes_posts)
 
 app.get('/', (req, res) => {
-    res.render('default')
+    res.render('default', {text: 'Hello, fucking world!'})
 })
 
 app.listen(5000)
