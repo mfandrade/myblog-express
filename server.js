@@ -7,14 +7,19 @@ app.set('view engine', 'ejs')
 app.use('/posts/', routes_posts)
 
 app.get('/', (req, res) => {
-    const posts = [
+    const all = [
         {
             title: 'My first post',
             content: 'Lorem ipsun sit dolor amet...',
             created: Date.now()
+        },
+        {
+            title: 'Hello, cruel world!',
+            content: 'Blablablablablablablablabla...',
+            created: Date.now()
         }
     ]
-    res.render('default', {all: posts})
+    res.render('default', {posts: all})
 })
 
 app.listen(5000)
