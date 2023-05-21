@@ -6,16 +6,22 @@ const app = express()
 
 mongoose.connect('mongodb://127.0.0.1/myblog');
 
-
 app.set('view engine', 'ejs')
 
-//const bodyparser = require('body-parser')
-//app.use(express.urlencoded({ extended: false }))
 app.use(express.urlencoded({ extended: false }))
 
+const PPP = 5 // posts per page
 app.get('/', async (req, res) => {
-    const all = await Post.find().sort({ created: 'desc' })
-    res.render('posts/index', { posts: all })
+
+    let cur = parseInt(req.query.page)
+    if (isNaN(cur)) cur = 0
+
+    let all = await Post.count().exec()
+    const posts = await Post.find()
+        .limit(PPP)
+        .skip(PPP * cur)
+        .sort({ created: 'desc' })
+    res.render('posts/index', { posts: posts, cur: cur, all: all, ppp: PPP })
 })
 app.use('/posts/', routes_posts)
 
