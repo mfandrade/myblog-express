@@ -5,12 +5,8 @@ const router = express.Router()
 router.get('/new', (req, res) => {
     res.render('posts/new')
 })
-router.post('/', async (req, res) => {
-    const post = new Post({
-        title: req.body.title,
-        content: req.body.content
-    })
-    await post.save()
+router.post('/', (req, res) => {
+    res.send('Got a post request')
 })
 
 module.exports = router
