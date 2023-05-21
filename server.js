@@ -1,10 +1,15 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const routes_posts = require('./routes/posts')
 const app = express()
+
+//mongoose.connect('mongodb://localhost/myblog');
+
 
 app.set('view engine', 'ejs')
 
 app.use('/posts/', routes_posts)
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
     const all = [
