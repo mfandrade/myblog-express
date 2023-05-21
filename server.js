@@ -8,8 +8,12 @@ mongoose.connect('mongodb://127.0.0.1/myblog');
 
 app.set('view engine', 'ejs')
 
+const bodyparser = require('body-parser')
+//app.use(express.urlencoded({ extended: false }))
+app.use(bodyparser.urlencoded({ extended: false }))
+app.use(bodyparser.json())
+
 app.use('/posts/', routes_posts)
-app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
     const all = [
