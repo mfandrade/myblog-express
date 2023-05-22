@@ -19,8 +19,9 @@
                         <%= post.created.toLocaleDateString() %>
                     </div>
                     <div class="card-text mb-2">
-                        <%= post.content %>
+                        <%= post.content.substring(0,100) %>&mldr;
                     </div>
+                    <a href="posts/<%= post.id %>" class="link-primary">read more</a>
                 </div>
             </div>
         <% }) %>

@@ -8,17 +8,22 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="mb-1"><%= post.title %></h1>
-        <time class="text-muted mb-2 d-block" datetime="<%= Math.floor(post.created.getTime() / 1000) %>">
-            Created at <%= post.created.toLocaleDateString() %>
-        </time>
+        <h1 class="mb-1">
+            <a href="/" class="btn btn-primary mr-1 px-3">&laquo;</a>
+            <%= post.title %>
+        </h1>
+        <div class="d-flex mb-2">
+            <time datetime="<%= Math.floor(post.created.getTime() / 1000) %>" class="text-muted mr-auto">
+                Created at <%= post.created.toLocaleDateString() %>
+            </time>
+            <form action="/posts/<%= post.id %>?_method=DELETE" method="post">
+                <a href="/posts/edit/<%= post.id %>" class="btn btn-outline-warning btn-sm">&#9998;</a>
+                <button type="submit" class="btn btn-outline-danger btn-sm">&#x2715;</button>
+            </form>
+        </div>
+        <div class="text-muted mb-2">
+        </div>
         <p><%= post.content %></p>
-
-        <nav>
-            <a href="/" class="link-primary">All posts</a>
-            | 
-            <a href="/posts/edit/<%= post.id %>" class="link-warning">Edit</a>
-        </nav>
     </div>
 </body>
 </html>
